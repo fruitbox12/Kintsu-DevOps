@@ -1,0 +1,27 @@
+---
+- name: Start chain
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Run make chain-start
+      command: make chain-start
+      args:
+        chdir: "/path/to/project"
+
+- name: Clean chain
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Run make chain-clean
+      command: make chain-clean
+      args:
+        chdir: "/path/to/project"
+
+- name: Restart chain
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Run make chain-restart
+      command: make chain-restart
+      args:
+        chdir: "/path/to/project"
