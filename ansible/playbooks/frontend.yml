@@ -1,0 +1,12 @@
+---
+- name: Run frontend
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Set REACT_APP_PROVIDER_URL environment variable
+      shell: export REACT_APP_PROVIDER_URL=ws://localhost:9944
+
+    - name: Run npm start
+      command: npm start
+      args:
+        chdir: "/path/to/project/frontend"
