@@ -1,0 +1,34 @@
+name: Ansible CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Ansible
+        uses: geerlingguy/setup-ansible@v2
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl
+
+      - name: Run Ansible playbook - Prerequisites
+        run: ansible-playbook Prerequisites.yml
+
+      - name: Run Ansible playbook - Chain
+        run: ansible-playbook Chain.yml
+
+      - name: Run Ansible playbook - Contracts
+        run: ansible-playbook Contracts.yml
+
+      - name: Run Ansible playbook - Frontend
+        run: ansible-playbook Frontend.yml
