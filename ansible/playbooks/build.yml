@@ -1,0 +1,18 @@
+---
+- name: Build contracts
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Run make build-all
+      command: make build-all
+      args:
+        chdir: "/path/to/project"
+
+- name: Deploy contracts
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Run make setup
+      command: make setup
+      args:
+        chdir: "/path/to/project"
